@@ -21,8 +21,7 @@ public class HelloController {
     @RequestMapping("/")
     @ResponseBody
     public String hello() {
-        User user = demoService.hello();
-        return user.getName();
+        return "hello";
     }
 
     @RequestMapping("/get")

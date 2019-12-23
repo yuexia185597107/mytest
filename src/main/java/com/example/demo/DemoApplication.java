@@ -36,6 +36,7 @@ public class DemoApplication extends RequestMappingHandlerMapping {
 		System.out.println("启动类的开始。。");
 		SpringApplication.run(DemoApplication.class, args);
 		System.out.println("启动类的结束。。");
+		System.out.println("启动类的结束。11。");
 	}
 //    @Bean
 //	public ServletRegistrationBean servletRegistrationBean(DispatcherServlet dispatcherServlet){

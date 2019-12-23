@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript" th:src="@{jquery-3.2.1.min.js}"></script>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <script type="text/javascript">
+        // var userId = ${param.userId};
+        var userId = "?";
+        $.ajax({
+            url:'roleAction!findByUser?userId'+userId,
+            dataType:'json',
+            // console.info(list);
+            success:function(list){
+                $.each(list,function(){
+                    $("#s1").append(new Option(this.name,this.id));
+                });
+            }
+        });
+
+        $.ajax({
+            url:'roleAction!findNoByUser?userId'+userId,
+            dataType:'json',
+            // console.info(list);
+            success:function(list){
+                $.each(list,function(){
+                    $("#s2").append(new Option(this.name,this.id));
+                });
+            }
+        });
+
+        function left2right(){
+            $("#s1 option:selected").appendTo("#s2").attr("selected",fasle).each(function(){
+                $.ajax({
+                    url:'roleAction!delRelation?roleId='+this.value+"&userId"+userId
+                });
+            });
+        }
+
+        function right2left(){
+            $("#s1 option:selected").appendTo("#s2").attr("selected",fasle).each(function(){
+                $.ajax({
+                    url:'roleAction!addRelation?roleId='+this.value+"&userId"+userId
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>static下面</h1>
+<select id="s1" multiple="multiple" size="10" style="width:100px;"></select>
+<button onclick="left2right();">&lt;&lt;&lt;</button>
+<button onclick="right2left();">&gt;&gt;&gt;</button>
+<select id="s2" multiple="multiple" size="10" style="width:100px;"></select>
+</body>
+</html>

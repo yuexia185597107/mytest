@@ -11,12 +11,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Autowired
-    private   LoginInterceptor loginInterceptor ;
+    private LoginInterceptor loginInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).excludePathPatterns("/roleAction/**").excludePathPatterns("/menuAction/**");
+        registry.addInterceptor(loginInterceptor).excludePathPatterns("/roleAction/**")
+                .excludePathPatterns("/menuAction/**")
+                .excludePathPatterns("/userAction/**");
     }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 //import org.apache.struts2.ServletActionContext;
@@ -35,7 +36,7 @@ public class MenuAction {
 //返回实体类？  还是返回页面？ 多尝试。。
         List<TreeNode> list2=menuService.find4tree();
         model.addAttribute("a",list2);
-        System.out.println("URL进入MenuAction的find4tree方法");
+        System.out.println("URL进入MenuAction的find4tree方法"+new Date());
         return "grant02";
     }
     @RequestMapping("/menuAction/select")

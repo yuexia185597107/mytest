@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/zTreeStyle/zTreeStyle.css"></link>
+    <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="/jquery.ztree.exhide.js"></script>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <script type="text/javascript">
+
+        $(function(){
+            var setting={
+                check: {
+                    enable: true,
+                    chkStyle: "checkbox"//显示 checkbox 选择框，默认checkbox可选择值radio
+                },
+                async: {
+                    enable: true,//要开启async功能必须设置为true,其他地方同理
+                    dataType: "json",
+                    type: "get",
+                    url: "http://localhost:8080/getTreeData"
+                }
+            };
+            var zTreeNodes=[
+                {"name":"北京","open":true,children:[
+                        {"name":"东城区"},
+                        {"name":"朝阳区"}
+                    ]},//open:true表示默认展开
+                {"name":"重庆","open":true,children:[
+                        {"name":"巴南区",children:[
+                                {"name":"南泉"},
+                                {"name":"界石"}
+                            ]},
+                        {"name":"渝中区"}
+                    ]}
+            ];
+
+
+            var setting1={
+                check: {
+                    enable: true,
+                    chkStyle: "checkbox"//显示 checkbox 选择框，默认checkbox可选择值radio
+                },
+                callback:{
+                    onCheck:zTreeOnCheck
+                },
+                async: {
+                    enable: true,//要开启async功能必须设置为true,其他地方同理
+                    dataType: "json",
+                    type: "get",
+                    url: "http://localhost:8080/getData/fromDb"
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        idKey: "id",//节点id名
+                        pIdKey: "pid",//父节点id名
+                        rootPId: -1//默认根节点为0
+                    }
+                }
+            };
+            var zTreeNodes=[];
+
+            var city = $.fn.zTree.init($("#treeDiv"), setting1);
+//第一个参数为zTree的DOM容器，第二个为zTree设置详情可见官网api,第三个为zTree的节点数据
+        });
+
+        function zTreeOnCheck(event, treeId, treeNode) {
+            alert(treeNode.name);//弹出城市名字
+        }
+
+    </script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>name</td>
+        <td>parent-id</td>
+    </tr>
+
+    <tr th:each="a:${a}">
+        <td th:text="${a.id}"></td>
+        <td th:text="${a.name}"></td>
+    </tr>
+</table>
+<h1>templates下面</h1>
+<div id="treeDiv" class="ztree"></div>
+<!--<button onclick="mySubmit();">确定</button>-->
+<!--<button onclick="mySubmit11();">确定测试</button>-->
+<form id="ff" action="/menuAction/select" method="post">
+    <input type="hidden"  name="roleId" value="${param.roleId}"/>
+</form>
+</body>
+
+</html>

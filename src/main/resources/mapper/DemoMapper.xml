@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="com.example.demo33.mapper.DemoMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo33.model.User">
@@ -14,4 +15,25 @@
     </select>
 
 
+=======
+<mapper namespace="com.example.demo.mapper.DemoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.model.User01">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="hello" resultMap="BaseResultMap">
+       select * from user3
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="BaseResultMap">
+       select * from module
+    </select>
+
+    <select id="post" resultMap="BaseResultMap">
+       select * from user3 where id=3
+    </select>
+>>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
 </mapper>

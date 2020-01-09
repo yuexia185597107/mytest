@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/css/zTreeStyle/zTreeStyle.css"></link>
     <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/jquery.ztree.all.min.js"></script>
@@ -10,18 +11,63 @@
     <meta charset="UTF-8"></meta>
     <title>Title</title>
     <script type="text/javascript">
+=======
+    <link rel="stylesheet" type="text/css" href="/static/css/zTreeStyle/zTreeStyle.css"></link>
+    <script type="text/javascript" src="/static/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="/static/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="/static/jquery.ztree.exhide.js"></script>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                // url:'menuAction!find4tree',/menuAction/find4tree
+                url:'http://localhost:8080/menuAction/find4tree',
+                dataType:'json',
+                success:function(list){
+                    var setting = {
+                        data: {
+                            simpleData: {
+                                enable: true
+                            }
+                        },check:{enable:true}
+                    };
+                    $.fn.zTree.init($("#treeDiv"),setting,list);
+                    var tree=$.fn.zTree.getZTreeObj("treeDiv");
+                    tree.expandAll(true);
+                }
+            });
+        });
+
+      function mySubmit11(){
+            $.ajax({
+                // url:'menuAction!find4tree',/menuAction/find4tree 加个http://
+                //Access to XMLHttpRequest at 'localhost:8080/menuAction/find4tree' from origin 'http://localhost:8080' has been blocked by CORS policy:
+                // Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+                url:'http://localhost:8080/menuAction/find4tree',
+
+
+            });
+        };
+
+>>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
 
         $(function(){
             var setting={
                 check: {
                     enable: true,
                     chkStyle: "checkbox"//显示 checkbox 选择框，默认checkbox可选择值radio
+<<<<<<< HEAD
                 },
                 async: {
                     enable: true,//要开启async功能必须设置为true,其他地方同理
                     dataType: "json",
                     type: "get",
                     url: "http://localhost:8080/getTreeData"
+=======
+>>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
                 }
             };
             var zTreeNodes=[
@@ -37,6 +83,7 @@
                         {"name":"渝中区"}
                     ]}
             ];
+<<<<<<< HEAD
 
 
             var setting1={
@@ -72,6 +119,12 @@
             alert(treeNode.name);//弹出城市名字
         }
 
+=======
+            var city = $.fn.zTree.init($("#treeDiv"), setting, zTreeNodes);
+//第一个参数为zTree的DOM容器，第二个为zTree设置详情可见官网api,第三个为zTree的节点数据
+        });
+
+>>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
     </script>
 </head>
 <body>
@@ -89,11 +142,22 @@
 </table>
 <h1>templates下面</h1>
 <div id="treeDiv" class="ztree"></div>
+<<<<<<< HEAD
 <!--<button onclick="mySubmit();">确定</button>-->
 <!--<button onclick="mySubmit11();">确定测试</button>-->
 <form id="ff" action="/menuAction/select" method="post">
     <input type="hidden"  name="roleId" value="${param.roleId}"/>
 </form>
+=======
+<button onclick="mySubmit();">确定</button>
+<button onclick="mySubmit11();">确定测试</button>
+<form id="ff" action="/menuAction/select" method="post">
+    <input type="hidden"  name="roleId" value="${param.roleId}"/>
+</form>
+
+
+
+>>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
 </body>
 
 </html>

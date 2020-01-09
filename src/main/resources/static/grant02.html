@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{css/zTreeStyle/zTreeStyle.css}">
+    <script type="text/javascript" th:src="@{jquery-3.2.1.min.js}"></script>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <script type="text/javascript">
+        console.info("11");
+        console.info("${param.roleId}");
+        $(function(){
+            $.ajax({
+                // url:'menuAction!find4tree',
+                url:'localhost:8080/menuAction/find4tree',
+                dataType:'json',
+                success:function(list){
+                    var setting = {
+                        data: {
+                            simpleData: {
+                                enable: true
+                            }
+                        },check:{enable:true}
+                    };
+                    $.fn.zTree.init($("#treeDiv"),setting,list);
+                    var tree=$.fn.zTree.getZTreeObj("treeDiv");
+                    tree.expandAll(true);
+                }
+            });
+        });
+
+        function mySubmit(){
+            var tree=$.fn.zTree.getZTreeObj("treeDiv");
+            var ss=tree.getCheckedNodes(true);
+            for (var i = 0; i < ss.length; i++) {
+                var node=ss[i];
+                $("#ff").append("<input type=\"hidden\"  name=\"roleId\" value="+node.id+"/>");
+            }
+            $("#ff")[0].sumbit();
+        }
+    </script>
+</head>
+<body>
+<h1>static下面</h1>
+<div id="treeDiv" class="ztree"></div>
+<button onclick="mySubmit();">确定</button>
+<!--<form id="ff" action="menuAction!select" method="post">-->
+<form id="ff" action="/menuAction/select" method="post">
+    <input type="hidden"  name="roleId" value="${param.roleId}"/>
+</form>
+</body>
+</html>

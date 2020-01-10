@@ -1,48 +1,21 @@
-<<<<<<< HEAD
+
 server:
   port: 8080
 ## 数据源配置
-=======
 ## 数据源配置 主数据源
->>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/test?useUnicode=true
         username: root
         password: 123456
-<<<<<<< HEAD
         driverClassName: com.mysql.jdbc.Driver
 mybatis:
     mapper-locations: classpath:mapper/*.xml
     type-aliases-package: com.example.demo.model
-mybatis-plus:
-    mapper-locations: classpath:mapper/**/*.xml
-=======
-        driver-class-name: com.mysql.jdbc.Driver
-        #之前是 driverClassName现改成driver-class-name
-    application:
-        name:test-thymeleaf
-    thymeleaf:
-        mode: HTML5
-        encoding: UTF-8
-        content-type: text/html
-        cache: false
-    #关闭thymeleaf的缓存。
-mybatis:
-    #配置Mapper的扫描路径  mybatis注解扫描
-    mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: com.example.demo.model
-    table:
-        auto: update
-    model:
-        pack: com.example.demo.model
-    database:
-        type: mysql
 
 mybatis-plus:
 #    mapper-locations: classpath:mapper/**/*.xml
     mapper-locations: classpath:mapper/*.xml
->>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b
     type-aliases-package: com.example.demo.model
     global-config:
         refresh: true
@@ -64,21 +37,4 @@ mybatis-plus:
         configuration:
             map-underscore-to-camel-case: true
             cache-enabled: false
-<<<<<<< HEAD
-=======
-#jsp页面映射  springboot不支持jsp页面，需要导入jar包。
-#mvc:
-#    view:
-      #  prefix:WEB-INF/jsp/
-#        prefix:/WEB-INF/jsp/
-#        suffix:.jsp
-        #  http请求映射
-    #static-path-pattern:/**
-    #Caused by: org.yaml.snakeyaml.scanner.ScannerException: while scanning a simple key
-    # in 'reader', line 43, column 5:
-    #        static-path-pattern:/**
 
-#    静态资源
-#resources:
-#   static-locations:classpath:*/js/,classpath:*/img/
->>>>>>> 5a653fc064ae5dcf0e59d72a78f6c647d2638a3b

@@ -106,6 +106,11 @@ public class HelloController {
         return "grant02";
     }
 
+    @RequestMapping("/index02")
+    public String toindex02() {
+        return "index";
+    }
+
     @RequestMapping("/getData/fromDb")
     @ResponseBody
     public Object getDataFromDb() {

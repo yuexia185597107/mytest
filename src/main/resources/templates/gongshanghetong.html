@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>序号</td>
+        <td>会员名</td>
+        <td>合同号</td>
+        <td>业务名称</td>
+        <td>交易日期</td>
+        <td>公司名称</td>
+        <td>区域</td>
+        <td>状态</td>
+        <td>合同总金额</td>
+        <td>优惠金额</td>
+        <td>付款状态</td>
+        <td>付款比例</td>
+        <td>实付金额</td>
+        <td>未付款金额</td>
+        <td>服务内容</td>
+        <td>店铺</td>
+        <td>公司性质</td>
+        <td>联系电话</td>
+        <td>备注</td>
+    </tr>
+
+    <tr th:each="listss:${listss}">
+        <td th:text="${listss.xuhaoo}"></td>
+        <td th:text="${listss.hyname}"></td>
+        <td th:text="${listss.varchar}"></td>
+        <td th:text="${listss.yewumingcheng}">业务名称</td>
+        <td th:text="${listss.jiaoyir}">交易日期</td>
+        <td th:text="${listss.gongsimingchneg}">公司名称</td>
+        <td>区域</td>
+        <td>状态</td>
+        <td>合同总金额</td>
+        <td>优惠金额</td>
+        <td>付款状态</td>
+        <td>付款比例</td>
+        <td>实付金额</td>
+        <td>未付款金额</td>
+        <td>服务内容</td>
+        <td>店铺</td>
+        <td>公司性质</td>
+        <td>联系电话</td>
+        <td>备注</td>
+    </tr>
+<!--    <s:iterator value="list" var="item">-->
+<!--        <tr>-->
+<!--            <td><s:property value="#item.name"/></td>-->
+<!--            <td><s:property value="#item.phone"/></td>-->
+<!--            <td><a href="jsp/role/grant.jsp?userId=<s:property value="#item.id"/>">角色授权</a></td>-->
+<!--        </tr>-->
+<!--    </s:iterator>-->
+</table>
+</body>
+</html>

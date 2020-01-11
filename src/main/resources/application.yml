@@ -11,12 +11,12 @@ spring:
         driverClassName: com.mysql.jdbc.Driver
 mybatis:
     mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: com.example.demo.model
+    type-aliases-package: com.example.demo33.model
 
 mybatis-plus:
 #    mapper-locations: classpath:mapper/**/*.xml
     mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: com.example.demo.model
+    type-aliases-package: com.example.demo33.model
     global-config:
         refresh: true
         #刷新mapper 调试神器
